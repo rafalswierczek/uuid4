@@ -29,7 +29,7 @@ As you can see, for example `time_low` has 4 octets, each is as follows `f2`, `e
 
 Now once you have 128 random bits, you have to modify octet 8 in the way that two most significant bits (MSB) are set to: `0` and `1`. For example, let's say 8 octet is as follows: `01101101`. Now you have to make sure that two bits on the left are `00` and then you can add desired `10` so the result is: `10101101`. It's done this way:
 
-(`01101101` & `00111111`) = `00101101`
+`01101101` & `00111111` = `00101101`
 
 `00101101` | `10000000` = `10101101`
 
