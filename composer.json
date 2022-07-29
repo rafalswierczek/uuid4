@@ -1,0 +1,17 @@
+{
+    "name": "rafalswierczek/uuid4",
+    "description": "Super simple UUID v4 generator in PHP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafał Świerczek",
+            "email": "swierczekraf@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "rafalswierczek\\Uuid4\\": "./"
+        }
+    }
+}
