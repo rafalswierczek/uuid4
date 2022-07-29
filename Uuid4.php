@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace rafalswierczek\Uuid4;
 
+/**
+ * RFC: https://datatracker.ietf.org/doc/html/rfc4122#section-4.4
+ */
 class Uuid4
 {
     /**
-     * RFC: https://datatracker.ietf.org/doc/html/rfc4122#section-4.4
+     * Generate new UUID version 4
      */
     public static function uuid4(): string
     {
