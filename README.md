@@ -2,6 +2,10 @@
 
 > RFC: https://datatracker.ietf.org/doc/html/rfc4122#section-4.4
 
+## Installation:
+
+> composer require rafalswierczek/uuid4
+
 ## Explanation:
 
 UUID v4 is data of 128 random bits (with small modifications) represented in hexadecimal notation.
