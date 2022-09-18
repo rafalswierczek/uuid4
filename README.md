@@ -1,7 +1,5 @@
 # Super simple UUID v4 generator in PHP
 
-> RFC: https://datatracker.ietf.org/doc/html/rfc4122#section-4.4
-
 ## Installation:
 
 > composer require rafalswierczek/uuid4
@@ -36,3 +34,5 @@ Now once you have 128 random bits, you have to modify octet 8 in the way that tw
 Once clock_seq_and_reserved is updated it's time to modify octet 6 (first 8 bits of time_high_and_version). You have to do the same steps but with `00001111` for AND and `01000000` for OR. For example if octet 6 is `10100101`, the result is `01000101` so first 4 bits are replaced with `0100` which are bits reserved for UUID v4.
 
 After modifying octet 8 and 6 of 128 random bits and converting it to hex notation you have ready to use UUID v4 string :)
+
+> RFC: https://datatracker.ietf.org/doc/html/rfc4122#section-4.4
