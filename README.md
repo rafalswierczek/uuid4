@@ -21,11 +21,7 @@ Octets are grouped into sections with following names:
 * clock_seq_low (octet 9)
 * node (octets 10-15)
 
-Result of UUID in hex notation looks like this:
-
-`time_low`-`time_mid`-`time_high_and_version`-`clock_seq_and_reserved clock_seq_low`-`node`
-
-example:
+Result of UUID4 in hex notation looks like this:
 
 `f2e0aa63-22f2-410c-bcfa-9475cf573193`
 
