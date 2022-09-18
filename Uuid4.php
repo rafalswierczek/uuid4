@@ -7,12 +7,9 @@ namespace rafalswierczek\Uuid4;
 /**
  * RFC: https://datatracker.ietf.org/doc/html/rfc4122#section-4.4
  */
-class Uuid4
+final class Uuid4
 {
-    /**
-     * Generate new UUID version 4
-     */
-    public static function uuid4(): string
+    public static function get(bool $toUpperCase = true): string
     {
         $bytes = random_bytes(16);
         
@@ -28,8 +25,38 @@ class Uuid4
         // add 0100 to 4 MSB | keep 4 LSB the same 
         $bytes[6] = chr($reset_time_hi_and_version | 0x40);
         
-        $hex = bin2hex($bytes);
+        $hexString = bin2hex($bytes);
         
-        return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split($hex, 4));
+        $uuid4 = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split($hexString, 4));
+        
+        return $toUpperCase ? strtoupper($uuid4) : $uuid4;
+    }
+    
+    public static function getBinary(bool $toUpperCase = true): string
+    {
+        $uuid4 = self::get($toUpperCase);
+        
+        return self::toBinary($uuid4);
+    }
+    
+    public static function toBinary(string $uuid4): string
+    {
+        $hexString = str_replace('-', '', $uuid4);
+        
+        return pack('H*', $hexString);
+    }
+    
+    public static function toHexString(string $binary, bool $toUpperCase = true): string
+    {
+        $hexString = unpack('H*', $binary)[1];
+        
+        $uuid4 = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split($hexString, 4));
+        
+        return $toUpperCase ? strtoupper($uuid4) : $uuid4;
+    }
+    
+    public static function equals(string $uuidA, string $uuidB): bool
+    {
+        return strtoupper($uuidA) === strtoupper($uuidB);
     }
 }
