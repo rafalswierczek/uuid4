@@ -4,6 +4,28 @@
 
 > composer require rafalswierczek/uuid4
 
+## Usage:
+
+```php
+$uuid4 = Uuid4Factory::create();
+
+$uuid4 = new Uuid4('f3d7fa06-d938-4c22-9505-c585efa381df');
+
+$uuid4 = Uuid4Factory::createBinary()->toHex();
+
+$uuid4Binary = Uuid4Factory::createBinary();
+
+$uuid4Binary = new Uuid4Binary($yourBinarySource);
+
+$uuid4Binary = Uuid4Factory::create()->toBinary();
+
+// example:
+$unknownSource = 'f3d7fa06-d938-4c22-9505-c585efa381df';
+Uuid4::validate($unknownSource); // use validation if needed
+$uuid4 = new Uuid4($unknownSource); // this also calls validate method because it is VO
+$equals = $validUuid4Object->equals($uuid4);
+```
+
 ## Explanation:
 
 UUID v4 is data of 128 random bits (with small modifications) represented in hexadecimal notation.

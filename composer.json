@@ -11,7 +11,15 @@
     ],
     "autoload": {
         "psr-4": {
-            "rafalswierczek\\Uuid4\\": "./"
+            "rafalswierczek\\Uuid4\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "rafalswierczek\\Uuid4\\Test\\": "tests/src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
     }
 }
