@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace rafalswierczek\Uuid4;
 
-final class Uuid4
+final class Uuid4 implements Uuid4Interface
 {
     public function __construct(private string $uuid4)
     {
@@ -28,8 +28,12 @@ final class Uuid4
         return new Uuid4Binary(pack('H*', $hexString));
     }
 
-    public function equals(self $uuid4): bool
+    public function equals(Uuid4Interface $uuid4): bool
     {
+        if ($uuid4 instanceof Uuid4Binary) {
+            $uuid4 = $uuid4->toHex();
+        }
+
         return strtolower($uuid4->get()) === strtolower($this->uuid4);
     }
 

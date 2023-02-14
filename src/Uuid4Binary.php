@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace rafalswierczek\Uuid4;
 
-final class Uuid4Binary
+final class Uuid4Binary implements Uuid4Interface
 {
     public function __construct(private string $binary)
     {
@@ -30,9 +30,13 @@ final class Uuid4Binary
         return new Uuid4($uuid4);
     }
     
-    public function equals(self $uuid4Binary): bool
+    public function equals(Uuid4Interface $uuid4): bool
     {
-        return $uuid4Binary->get() === $this->binary;
+        if ($uuid4 instanceof Uuid4) {
+            $uuid4 = $uuid4->toBinary();
+        }
+
+        return $uuid4->get() === $this->binary;
     }
 
     public static function validate(string $binary): void

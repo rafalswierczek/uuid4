@@ -19,12 +19,14 @@ final class Uuid4BinaryTest extends TestCase
 
     public function testEquals(): void
     {
-        $validUuid4Binary = (new Uuid4(Uuid4Test::VALID_UUID4))->toBinary()->get();
+        $uuid4 = new Uuid4(Uuid4Test::VALID_UUID4);
+        $validUuid4Binary = $uuid4->toBinary()->get();
 
         $uuid4BinaryA = new Uuid4Binary($validUuid4Binary);
         $uuid4BinaryB = new Uuid4Binary($validUuid4Binary);
 
         $this->assertTrue($uuid4BinaryA->equals($uuid4BinaryB));
+        $this->assertTrue($uuid4BinaryA->equals($uuid4));
     }
 
     public function testInvalidUuid(): void

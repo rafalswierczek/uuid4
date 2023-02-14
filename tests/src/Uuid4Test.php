@@ -6,6 +6,7 @@ namespace rafalswierczek\Uuid4\Test;
 
 use rafalswierczek\Uuid4\Uuid4;
 use PHPUnit\Framework\TestCase;
+use rafalswierczek\Uuid4\Uuid4Binary;
 
 final class Uuid4Test extends TestCase
 {
@@ -22,8 +23,10 @@ final class Uuid4Test extends TestCase
     {
         $uuid4A = new Uuid4(self::VALID_UUID4);
         $uuid4B = new Uuid4(self::VALID_UUID4);
+        $uuid4Binary = new Uuid4Binary($uuid4A->toBinary()->get());
 
         $this->assertTrue($uuid4A->equals($uuid4B));
+        $this->assertTrue($uuid4A->equals($uuid4Binary));
     }
 
     public function testInvalidUuid(): void
