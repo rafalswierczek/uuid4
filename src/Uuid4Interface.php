@@ -11,6 +11,4 @@ interface Uuid4Interface
     public function get(): string;
 
     public function equals(Uuid4Interface $uuid4): bool;
-
-    public static function validate(string $uuid4): void;
 }
