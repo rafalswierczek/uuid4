@@ -16,27 +16,21 @@ final class Uuid4Binary implements Uuid4Interface
         return $this->binary;
     }
 
-    public function get(): string
+    public function toBinary(): string
     {
         return $this->binary;
     }
     
-    public function toHex(): Uuid4
+    public function toHex(): string
     {
         $hexString = unpack('H*', $this->binary)[1];
         
-        $uuid4 = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split($hexString, 4));
-
-        return new Uuid4($uuid4);
+        return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split($hexString, 4));
     }
     
     public function equals(Uuid4Interface $uuid4): bool
     {
-        if ($uuid4 instanceof Uuid4) {
-            $uuid4 = $uuid4->toBinary();
-        }
-
-        return $uuid4->get() === $this->binary;
+        return $uuid4->toBinary() === $this->binary;
     }
 
     public static function validate(string $binary): void

@@ -36,6 +36,6 @@ final class Uuid4Factory
     {
         $uuid4 = self::create();
         
-        return $uuid4->toBinary();
+        return new Uuid4Binary($uuid4->toBinary());
     }
 }

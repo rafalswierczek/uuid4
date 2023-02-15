@@ -16,25 +16,21 @@ final class Uuid4 implements Uuid4Interface
         return $this->uuid4;
     }
 
-    public function get(): string
+    public function toHex(): string
     {
         return $this->uuid4;
     }
     
-    public function toBinary(): Uuid4Binary
+    public function toBinary(): string
     {
         $hexString = str_replace('-', '', $this->uuid4);
         
-        return new Uuid4Binary(pack('H*', $hexString));
+        return pack('H*', $hexString);
     }
 
     public function equals(Uuid4Interface $uuid4): bool
     {
-        if ($uuid4 instanceof Uuid4Binary) {
-            $uuid4 = $uuid4->toHex();
-        }
-
-        return strtolower($uuid4->get()) === strtolower($this->uuid4);
+        return strtolower($uuid4->toHex()) === strtolower($this->uuid4);
     }
 
     public static function validate(string $uuid4): void

@@ -16,14 +16,14 @@ final class Uuid4Test extends TestCase
     {
         $uuid4 = new Uuid4(self::VALID_UUID4);
 
-        $this->assertSame(self::VALID_UUID4, "$uuid4");
+        $this->assertSame($uuid4->toHex(), "$uuid4");
     }
 
     public function testEquals(): void
     {
         $uuid4A = new Uuid4(self::VALID_UUID4);
         $uuid4B = new Uuid4(self::VALID_UUID4);
-        $uuid4Binary = new Uuid4Binary($uuid4A->toBinary()->get());
+        $uuid4Binary = new Uuid4Binary($uuid4A->toBinary());
 
         $this->assertTrue($uuid4A->equals($uuid4B));
         $this->assertTrue($uuid4A->equals($uuid4Binary));

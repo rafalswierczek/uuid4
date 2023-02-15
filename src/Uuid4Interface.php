@@ -8,7 +8,9 @@ interface Uuid4Interface
 {
     public function __toString(): string;
 
-    public function get(): string;
+    public function toHex(): string;
+
+    public function toBinary(): string;
 
     public function equals(Uuid4Interface $uuid4): bool;
 }
